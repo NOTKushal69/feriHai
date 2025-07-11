@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palpa Byayam Mandir - Premier Fitness Center in Tansen</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2a5298;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2a5298;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, #2a5298, #1e3c72);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Location Section */
+        .location {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2a5298;
+        }
+
+        .location-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .location-details {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .location-item i {
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            color: #2a5298;
+            width: 20px;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+        .contact {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: #2a5298;
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #ffd700;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #2a5298, #1e3c72);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42,82,152,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Photo Gallery */
+        .gallery {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #2a5298, #1e3c72);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .gallery-caption {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #1e3c72;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu li {
+            border-bottom: 1px solid #2a5298;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #2a5298;
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-item i {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Main App Component
+        const App = () => {
+            const [isModalOpen, setIsModalOpen] = useState(false);
+            const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+            const [formData, setFormData] = useState({
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            });
+
+            const handleInputChange = (e) => {
+                setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value
+                });
+            };
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                // In a real app, this would send data to backend
+                alert('Thank you for your message! We will contact you soon.');
+                setFormData({ name: '', email: '', phone: '', message: '' });
+            };
+
+            const openModal = () => setIsModalOpen(true);
+            const closeModal = () => setIsModalOpen(false);
+            const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+            useEffect(() => {
+                // Smooth scrolling for navigation links
+                const links = document.querySelectorAll('a[href^="#"]');
+                links.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = document.querySelector(link.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                        }
+                        // Close mobile menu after clicking a link
+                        setIsMobileMenuOpen(false);
+                    });
+                });
+
+                // Close mobile menu when clicking outside
+                const handleClickOutside = (event) => {
+                    if (!event.target.closest('.nav') && isMobileMenuOpen) {
+                        setIsMobileMenuOpen(false);
+                    }
+                };
+
+                document.addEventListener('click', handleClickOutside);
+                return () => document.removeEventListener('click', handleClickOutside);
+            }, [isMobileMenuOpen]);
+
+            return (
+                <div className="App">
+                    {/* Header */}
+                    <header className="header">
+                        <nav className="nav container">
+                            <div className="logo">
+                                <i className="fas fa-dumbbell"></i> Palpa Byayam Mandir
+                            </div>
+                            <ul className="nav-links">
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#gallery">Gallery</a></li>
+                                <li><a href="#location">Location</a></li>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                            <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+                                <i className="fas fa-bars"></i>
+                            </button>
+                            <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+                                <ul>
+                                    <li><a href="#home">Home</a></li>
+                                    <li><a href="#services">Services</a></li>
+                                    <li><a href="#gallery">Gallery</a></li>
+                                    <li><a href="#location">Location</a></li>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </header>
+
+                    {/* Hero Section */}
+                    <section id="home" className="hero">
+                        <div className="hero-background">
+                         <img src="gymPhoto.jpg" alt="Palpa Byayam Mandir - Modern Gym Facilities" />
+
+                        </div>
+                        <div className="hero-overlay"></div>
+                        <div className="hero-content">
+                            <h1>Transform Your Body, Transform Your Life</h1>
+                            <p>Premium fitness facilities in the heart of Tansen, Palpa</p>
+                            <button className="cta-button" onClick={openModal}>
+                                Start Your Journey
+                            </button>
+                        </div>
+                    </section>
+
+                    {/* Gallery Section */}
+                    <section id="gallery" className="gallery">
+                        <div className="container">
+                            <h2 className="section-title">Our Gym Gallery</h2>
+                            <div className="gallery-grid">
+                                <div className="gallery-item">
+                                    <div className="gallery-image">
+                                        <i className="fas fa-dumbbell"></i>
+                                    </div>
+                                    <div className="gallery-caption">
+                                        <h3>Weight Training Area</h3>
+                                        <p>Modern weight training equipment for all fitness levels</p>
+                                    </div>
+                                </div>
+                                <div className="gallery-item">
+                                    <div className="gallery-image">
+                                        <i className="fas fa-running"></i>
+                                    </div>
+                                    <div className="gallery-caption">
+                                        <h3>Cardio Section</h3>
+                                        <p>State-of-the-art cardio machines for cardiovascular fitness</p>
+                                    </div>
+                                </div>
+                                <div className="gallery-item">
+                                    <div className="gallery-image">
+                                        <i className="fas fa-users"></i>
+                                    </div>
+                                    <div className="gallery-caption">
+                                        <h3>Group Exercise Studio</h3>
+                                        <p>Spacious area for group classes and fitness sessions</p>
+                                    </div>
+                                </div>
+                                <div className="gallery-item">
+                                    <div className="gallery-image">
+                                        <i className="fas fa-heartbeat"></i>
+                                    </div>
+                                    <div className="gallery-caption">
+                                        <h3>Functional Training</h3>
+                                        <p>Functional fitness area with specialized equipment</p>
+                                    </div>
+                                </div>
+                                <div className="gallery-item">
+                                    <div className="gallery-image">
+                                        <i className="fas fa-leaf"></i>
+                                    </div>
+                                    <div className="gallery-caption">
+                                        <h3>Wellness Center</h3>
+                                        <p>Dedicated space for stretching and recovery</p>
+                                    </div>
+                                </div>
+                                <div className="gallery-item">
+                                    <div className="gallery-image">
+                                        <i className="fas fa-trophy"></i>
+                                    </div>
+                                    <div className="gallery-caption">
+                                        <h3>Achievement Wall</h3>
+                                        <p>Celebrating our members' fitness achievements</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="services" className="services">
+                        <div className="container">
+                            <h2 className="section-title">Our Services</h2>
+                            <div className="services-grid">
+                                <div className="service-card">
+                                    <div className="service-icon">
+                                        <i className="fas fa-dumbbell"></i>
+                                    </div>
+                                    <h3>Professional Coaching</h3>
+                                    <p>Expert trainers with years of experience to guide you through your fitness journey with personalized attention.</p>
+                                </div>
+                                <div className="service-card">
+                                    <div className="service-icon">
+                                        <i className="fas fa-apple-alt"></i>
+                                    </div>
+                                    <h3>Nutritionist Consultation</h3>
+                                    <p>Professional nutritionist available to create customized meal plans and dietary guidance for optimal results.</p>
+                                </div>
+                                <div className="service-card">
+                                    <div className="service-icon">
+                                        <i className="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <h3>Workout Routines</h3>
+                                    <p>Structured workout programs designed for different fitness levels and goals, from beginners to advanced athletes.</p>
+                                </div>
+                                <div className="service-card">
+                                    <div className="service-icon">
+                                        <i className="fas fa-users"></i>
+                                    </div>
+                                    <h3>Group Classes</h3>
+                                    <p>Dynamic group fitness classes including yoga, aerobics, and strength training in a motivating environment.</p>
+                                </div>
+                                <div className="service-card">
+                                    <div className="service-icon">
+                                        <i className="fas fa-heartbeat"></i>
+                                    </div>
+                                    <h3>Health Monitoring</h3>
+                                    <p>Regular health checkups and progress tracking to ensure you're on the right path to your fitness goals.</p>
+                                </div>
+                                <div className="service-card">
+                                    <div className="service-icon">
+                                        <i className="fas fa-clock"></i>
+                                    </div>
+                                    <h3>Flexible Timings</h3>
+                                    <p>Extended hours from early morning to evening to accommodate your busy schedule and lifestyle.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Location Section */}
+                    <section id="location" className="location">
+                        <div className="container">
+                            <div className="location-content">
+                                <div className="location-info">
+                                    <h2>Find Us in Tansen</h2>
+                                    <p>Located in the heart of Tansen, Palpa at Buspark, our gym is easily accessible and convenient for all residents of the area.</p>
+                                    
+                                    <div className="location-details">
+                                        <div className="location-item">
+                                            <i className="fas fa-map-marker-alt"></i>
+                                            <div>
+                                                <strong>Address:</strong> Buspark, Tansen, Palpa, Lumbini Province, Nepal
+                                            </div>
+                                        </div>
+                                        <div className="location-item">
+                                            <i className="fas fa-road"></i>
+                                            <div>
+                                                <strong>Landmarks:</strong> Near Tansen Bus Park, Main Road
+                                            </div>
+                                        </div>
+                                        <div className="location-item">
+                                            <i className="fas fa-car"></i>
+                                            <div>
+                                                <strong>Parking:</strong> Available on-site
+                                            </div>
+                                        </div>
+                                        <div className="location-item">
+                                            <i className="fas fa-bus"></i>
+                                            <div>
+                                                <strong>Public Transport:</strong> Easy access via local buses
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="contact-item">
+                                        <i className="fas fa-phone"></i>
+                                        <div>
+                                            <strong>Call for Directions:</strong><br />
+                                            +977-9857068412 / +977-9847069540
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="map-container">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3530.7166875896944!2d83.55066887453598!3d27.866667426016946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3996867b8a0a6b87%3A0x49b5c5c7b1c0c0c0!2sTansen%20Bus%20Park!5e0!3m2!1sen!2snp!4v1700000000000!5m2!1sen!2snp"
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title="Palpa Byayam Mandir Location - Tansen Bus Park"
+                                    ></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="about" className="about">
+                        <div className="container">
+                            <div className="about-content">
+                                <div className="about-text">
+                                    <h2>About Palpa Byayam Mandir</h2>
+                                    <p>Located in the heart of Tansen, Palpa at Buspark, Palpa Byayam Mandir is more than just a gym - it's a complete fitness destination. We are committed to helping the people of Palpa achieve their health and fitness goals through state-of-the-art equipment, expert guidance, and a supportive community.</p>
+                                    <p>Our facility offers modern equipment, professional trainers, nutritionist consultations, and personalized workout routines. Whether you're a beginner starting your fitness journey or an experienced athlete looking to reach new heights, we have something for everyone.</p>
+                                    <p>Join our growing community of health-conscious individuals who have made fitness a priority in their lives. Experience the difference that professional guidance and quality equipment can make in your fitness journey.</p>
+                                </div>
+                                <div className="about-image">
+                                    <div>
+                                        <i className="fas fa-dumbbell" style={{fontSize: '4rem', marginBottom: '1rem'}}></i>
+                                        <br />
+                                        Professional Gym Equipment
+                                        <br />
+                                        Modern Facilities
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Contact Section */}
+                    <section id="contact" className="contact">
+                        <div className="container">
+                            <h2 className="section-title">Contact Us</h2>
+                            <div className="contact-content">
+                                <div className="contact-info">
+                                    <h3>Get in Touch</h3>
+                                    <div className="contact-item">
+                                        <i className="fas fa-map-marker-alt"></i>
+                                        <div>
+                                            <strong>Address:</strong><br />
+                                            Buspark, Tansen, Palpa<br />
+                                            Lumbini Province, Nepal
+                                        </div>
+                                    </div>
+                                    <div className="contact-item">
+                                        <i className="fas fa-phone"></i>
+                                        <div>
+                                            <strong>Phone:</strong><br />
+                                            +977-9857068412<br />
+                                            +977-9847069540
+                                        </div>
+                                    </div>
+                                    <div className="contact-item">
+                                        <i className="fas fa-envelope"></i>
+                                        <div>
+                                            <strong>Email:</strong><br />
+                                            info@palpabyayammandir.com<br />
+                                            contact@palpabyayammandir.com
+                                        </div>
+                                    </div>
+                                    <div className="contact-item">
+                                        <i className="fas fa-clock"></i>
+                                        <div>
+                                            <strong>Hours:</strong><br />
+                                            Mon-Fri: 5:00 AM - 10:00 PM<br />
+                                            Sat-Sun: 6:00 AM - 9:00 PM
+                                        </div>
+                                    </div>
+                                    <div className="contact-item">
+                                        <i className="fab fa-facebook"></i>
+                                        <div>
+                                            <strong>Facebook:</strong><br />
+                                            <a href="https://www.facebook.com/p/Tansen-Byayam-Mandir-Fitness-center-100057364782818/" target="_blank" rel="noopener noreferrer" style={{color: '#ffd700'}}>
+                                                Tansen Byayam Mandir & Fitness center
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="contact-form">
+                                    <h3>Send us a Message</h3>
+                                    <form onSubmit={handleSubmit}>
+                                        <div className="form-group">
+                                            <label htmlFor="name">Full Name</label>
+                                            <input
+                                                type="text"
+                                                id="name"
+                                                name="name"
+                                                value={formData.name}
+                                                onChange={handleInputChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="email">Email Address</label>
+                                            <input
+                                                type="email"
+                                                id="email"
+                                                name="email"
+                                                value={formData.email}
+                                                onChange={handleInputChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="phone">Phone Number</label>
+                                            <input
+                                                type="tel"
+                                                id="phone"
+                                                name="phone"
+                                                value={formData.phone}
+                                                onChange={handleInputChange}
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="message">Message</label>
+                                            <textarea
+                                                id="message"
+                                                name="message"
+                                                value={formData.message}
+                                                onChange={handleInputChange}
+                                                placeholder="Tell us about your fitness goals or any questions you have..."
+                                                required
+                                            ></textarea>
+                                        </div>
+                                        <button type="submit" className="submit-btn">
+                                            Send Message
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="footer">
+                        <div className="container">
+                            <div className="footer-content">
+                                <div className="footer-section">
+                                    <h3>Palpa Byayam Mandir</h3>
+                                    <p>Your premier fitness destination in Tansen, Palpa. Transform your body, transform your life.</p>
+                                </div>
+                                <div className="footer-section">
+                                    <h3>Quick Links</h3>
+                                    <ul style={{listStyle: 'none', lineHeight: '2'}}>
+                                        <li><a href="#home" style={{color: 'white', textDecoration: 'none'}}>Home</a></li>
+                                        <li><a href="#services" style={{color: 'white', textDecoration: 'none'}}>Services</a></li>
+                                        <li><a href="#gallery" style={{color: 'white', textDecoration: 'none'}}>Gallery</a></li>
+                                        <li><a href="#location" style={{color: 'white', textDecoration: 'none'}}>Location</a></li>
+                                        <li><a href="#about" style={{color: 'white', textDecoration: 'none'}}>About</a></li>
+                                        <li><a href="#contact" style={{color: 'white', textDecoration: 'none'}}>Contact</a></li>
+                                    </ul>
+                                </div>
+                                <div className="footer-section">
+                                    <h3>Follow Us</h3>
+                                    <div className="social-links">
+                                        <a href="https://www.facebook.com/p/Tansen-Byayam-Mandir-Fitness-center-100057364782818/" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-facebook"></i>
+                                        </a>
+                                        <a href="#" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-instagram"></i>
+                                        </a>
+                                        <a href="#" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-youtube"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style={{borderTop: '1px solid #333', paddingTop: '1rem', marginTop: '1rem'}}>
+                                <p>&copy; 2025 Palpa Byayam Mandir. All rights reserved. | Designed for fitness enthusiasts in Tansen, Palpa</p>
+                            </div>
+                        </div>
+                    </footer>
+
+                    {/* Modal */}
+                    {isModalOpen && (
+                        <div className="modal" style={{display: 'block'}} onClick={closeModal}>
+                            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                                <span className="close" onClick={closeModal}>&times;</span>
+                                <h2>Start Your Fitness Journey</h2>
+                                <p>Ready to transform your life? Contact us today to schedule your consultation and begin your fitness journey with Palpa Byayam Mandir.</p>
+                                <div style={{marginTop: '20px'}}>
+                                    <p><strong>Call us:</strong> +977-9857068412 / +977-9847069540 /+977-9805473170</p>
+                                    <p><strong>Visit us:</strong> Buspark, Tansen, Palpa</p>
+                                    <p><strong>Facebook:</strong> Tansen Byayam Mandir & Fitness center</p>
+                                </div>
+                                <button className="cta-button" onClick={closeModal} style={{marginTop: '20px'}}>
+                                    Get Started
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // Render the app
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
