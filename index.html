@@ -414,17 +414,31 @@
         .gallery-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(45deg, #2a5298, #1e3c72);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 0;
         }
 
         .gallery-caption {
             padding: 1rem;
             text-align: center;
+        }
+
+        .gallery-caption h3 {
+            margin-bottom: 0.5rem;
+            color: #2a5298;
+        }
+
+        .gallery-caption p {
+            color: #666;
+            font-size: 0.9rem;
         }
 
         /* Mobile Menu */
@@ -477,47 +491,47 @@
             .nav-links {
                 display: none;
             }
-            
+
             .mobile-menu-toggle {
                 display: block;
             }
-            
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero-content p {
                 font-size: 1rem;
             }
-            
+
             .about-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .contact-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .location-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .services-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .container {
                 padding: 0 15px;
             }
-            
+
             .section-title {
                 font-size: 2rem;
             }
-            
+
             .service-card {
                 margin-bottom: 1rem;
             }
@@ -527,25 +541,25 @@
             .hero-content h1 {
                 font-size: 2rem;
             }
-            
+
             .logo {
                 font-size: 1.4rem;
             }
-            
+
             .cta-button {
                 padding: 12px 24px;
                 font-size: 1rem;
             }
-            
+
             .section-title {
                 font-size: 1.8rem;
             }
-            
+
             .contact-item {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .contact-item i {
                 margin-bottom: 0.5rem;
             }
@@ -555,11 +569,11 @@
             .hero-content h1 {
                 font-size: 3rem;
             }
-            
+
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -569,7 +583,7 @@
             .services-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
+
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -705,8 +719,7 @@
                     {/* Hero Section */}
                     <section id="home" className="hero">
                         <div className="hero-background">
-                         <img src="gymPhoto.jpg" alt="Tansen Byayam Mandir - Modern Gym Facilities" />
-
+                            <img src="cover.jpg" alt="Tansen Byayam Mandir - Modern Gym Facilities" />
                         </div>
                         <div className="hero-overlay"></div>
                         <div className="hero-content">
@@ -725,7 +738,7 @@
                             <div className="gallery-grid">
                                 <div className="gallery-item">
                                     <div className="gallery-image">
-                                        <i className="fas fa-dumbbell"></i>
+                                        <img src="weight.jpg" alt="Weight Training Area" />
                                     </div>
                                     <div className="gallery-caption">
                                         <h3>Weight Training Area</h3>
@@ -734,7 +747,7 @@
                                 </div>
                                 <div className="gallery-item">
                                     <div className="gallery-image">
-                                        <i className="fas fa-running"></i>
+                                        <img src="cardio.jpg" alt="Cardio Section" />
                                     </div>
                                     <div className="gallery-caption">
                                         <h3>Cardio Section</h3>
@@ -743,7 +756,7 @@
                                 </div>
                                 <div className="gallery-item">
                                     <div className="gallery-image">
-                                        <i className="fas fa-users"></i>
+                                        <img src="gymPhoto.jpg" alt="Group Exercise Studio" />
                                     </div>
                                     <div className="gallery-caption">
                                         <h3>Group Exercise Studio</h3>
@@ -752,7 +765,7 @@
                                 </div>
                                 <div className="gallery-item">
                                     <div className="gallery-image">
-                                        <i className="fas fa-heartbeat"></i>
+                                        <img src="functional.jpg" alt="Functional Training" />
                                     </div>
                                     <div className="gallery-caption">
                                         <h3>Functional Training</h3>
@@ -761,7 +774,7 @@
                                 </div>
                                 <div className="gallery-item">
                                     <div className="gallery-image">
-                                        <i className="fas fa-leaf"></i>
+                                        <img src="wellness.jpg" alt="Wellness Center" />
                                     </div>
                                     <div className="gallery-caption">
                                         <h3>Wellness Center</h3>
@@ -770,7 +783,7 @@
                                 </div>
                                 <div className="gallery-item">
                                     <div className="gallery-image">
-                                        <i className="fas fa-trophy"></i>
+                                        <img src="achievement.jpg" alt="Achievement Wall" />
                                     </div>
                                     <div className="gallery-caption">
                                         <h3>Achievement Wall</h3>
@@ -780,6 +793,8 @@
                             </div>
                         </div>
                     </section>
+
+                    {/* Services Section */}
                     <section id="services" className="services">
                         <div className="container">
                             <h2 className="section-title">Our Services</h2>
@@ -837,7 +852,7 @@
                                 <div className="location-info">
                                     <h2>Find Us in Tansen</h2>
                                     <p>Located in the heart of Tansen, Palpa at Buspark, our gym is easily accessible and convenient for all residents of the area.</p>
-                                    
+
                                     <div className="location-details">
                                         <div className="location-item">
                                             <i className="fas fa-map-marker-alt"></i>
@@ -864,7 +879,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="contact-item">
                                         <i className="fas fa-phone"></i>
                                         <div>
@@ -875,7 +890,7 @@
                                 </div>
                                 <div className="map-container">
                                     <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3530.7166875896944!2d83.55066887453598!3d27.866667426016946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3996867b8a0a6b87%3A0x49b5c5c7b1c0c0c0!2sTansen%20Bus%20Park!5e0!3m2!1sen!2snp!4v1700000000000!5m2!1sen!2snp"
+                                        src="https://maps.google.com/maps?q=Buspark,Tansen,Palpa,Lumbini+Province,Nepal&t=&z=13&ie=UTF8&iwloc=&output=embed"
                                         allowFullScreen=""
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
@@ -885,23 +900,19 @@
                             </div>
                         </div>
                     </section>
+
+                    {/* About Section */}
                     <section id="about" className="about">
                         <div className="container">
                             <div className="about-content">
                                 <div className="about-text">
-                                    <h2>About Palpa Byayam Mandir</h2>
+                                    <h2>About Tansen Byayam Mandir</h2>
                                     <p>Located in the heart of Tansen, Palpa at Buspark, Palpa Byayam Mandir is more than just a gym - it's a complete fitness destination. We are committed to helping the people of Palpa achieve their health and fitness goals through state-of-the-art equipment, expert guidance, and a supportive community.</p>
                                     <p>Our facility offers modern equipment, professional trainers, nutritionist consultations, and personalized workout routines. Whether you're a beginner starting your fitness journey or an experienced athlete looking to reach new heights, we have something for everyone.</p>
-                                    <p>Join our growing community of health-conscious individuals who have made fitness a priority in their lives. Experience the difference that professional guidance and quality equipment can make in your fitness journey.</p>
+                                    <p>Join our growing community of health-conscious individuals who have made fitness a priority in their lives. Experience the difference that professional guidance and quality equipment can make in your fitness journey. At Palpa Byayam Mandir, your fitness goals are our priority.</p>
                                 </div>
                                 <div className="about-image">
-                                    <div>
-                                        <i className="fas fa-dumbbell" style={{fontSize: '4rem', marginBottom: '1rem'}}></i>
-                                        <br />
-                                        Professional Gym Equipment
-                                        <br />
-                                        Modern Facilities
-                                    </div>
+                                    <p>Your journey to a healthier you starts here!</p>
                                 </div>
                             </div>
                         </div>
@@ -910,57 +921,32 @@
                     {/* Contact Section */}
                     <section id="contact" className="contact">
                         <div className="container">
-                            <h2 className="section-title">Contact Us</h2>
+                            <h2 className="section-title">Get in Touch</h2>
                             <div className="contact-content">
                                 <div className="contact-info">
-                                    <h3>Get in Touch</h3>
+                                    <h3>Contact Information</h3>
                                     <div className="contact-item">
                                         <i className="fas fa-map-marker-alt"></i>
-                                        <div>
-                                            <strong>Address:</strong><br />
-                                            Buspark, Tansen, Palpa<br />
-                                            Lumbini Province, Nepal
-                                        </div>
+                                        <p>Buspark, Tansen, Palpa, Lumbini Province, Nepal</p>
                                     </div>
                                     <div className="contact-item">
                                         <i className="fas fa-phone"></i>
-                                        <div>
-                                            <strong>Phone:</strong><br />
-                                            +977-9857068412<br />
-                                            +977-9847069540
-                                        </div>
+                                        <p>+977-9857068412 / +977-9847069540</p>
                                     </div>
                                     <div className="contact-item">
                                         <i className="fas fa-envelope"></i>
-                                        <div>
-                                            <strong>Email:</strong><br />
-                                            info@palpabyayammandir.com<br />
-                                            contact@palpabyayammandir.com
-                                        </div>
+                                        <p>info@palpabyayammandir.com</p>
                                     </div>
                                     <div className="contact-item">
                                         <i className="fas fa-clock"></i>
-                                        <div>
-                                            <strong>Hours:</strong><br />
-                                            Mon-Fri: 5:00 AM - 10:00 PM<br />
-                                            Sat-Sun: 6:00 AM - 9:00 PM
-                                        </div>
-                                    </div>
-                                    <div className="contact-item">
-                                        <i className="fab fa-facebook"></i>
-                                        <div>
-                                            <strong>Facebook:</strong><br />
-                                            <a href="https://www.facebook.com/p/Tansen-Byayam-Mandir-Fitness-center-100057364782818/" target="_blank" rel="noopener noreferrer" style={{color: '#ffd700'}}>
-                                                Tansen Byayam Mandir & Fitness center
-                                            </a>
-                                        </div>
+                                        <p>Mon - Fri: 6:00 AM - 9:00 PM<br/>Sat: 7:00 AM - 6:00 PM<br/>Sun: Closed</p>
                                     </div>
                                 </div>
                                 <div className="contact-form">
-                                    <h3>Send us a Message</h3>
+                                    <h3>Send Us a Message</h3>
                                     <form onSubmit={handleSubmit}>
                                         <div className="form-group">
-                                            <label htmlFor="name">Full Name</label>
+                                            <label htmlFor="name">Name</label>
                                             <input
                                                 type="text"
                                                 id="name"
@@ -971,7 +957,7 @@
                                             />
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="email">Email Address</label>
+                                            <label htmlFor="email">Email</label>
                                             <input
                                                 type="email"
                                                 id="email"
@@ -982,7 +968,7 @@
                                             />
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="phone">Phone Number</label>
+                                            <label htmlFor="phone">Phone (Optional)</label>
                                             <input
                                                 type="tel"
                                                 id="phone"
@@ -998,13 +984,10 @@
                                                 name="message"
                                                 value={formData.message}
                                                 onChange={handleInputChange}
-                                                placeholder="Tell us about your fitness goals or any questions you have..."
                                                 required
                                             ></textarea>
                                         </div>
-                                        <button type="submit" className="submit-btn">
-                                            Send Message
-                                        </button>
+                                        <button type="submit" className="submit-btn">Send Message</button>
                                     </form>
                                 </div>
                             </div>
@@ -1013,67 +996,99 @@
 
                     {/* Footer */}
                     <footer className="footer">
-                        <div className="container">
-                            <div className="footer-content">
-                                <div className="footer-section">
-                                    <h3>Palpa Byayam Mandir</h3>
-                                    <p>Your premier fitness destination in Tansen, Palpa. Transform your body, transform your life.</p>
-                                </div>
-                                <div className="footer-section">
-                                    <h3>Quick Links</h3>
-                                    <ul style={{listStyle: 'none', lineHeight: '2'}}>
-                                        <li><a href="#home" style={{color: 'white', textDecoration: 'none'}}>Home</a></li>
-                                        <li><a href="#services" style={{color: 'white', textDecoration: 'none'}}>Services</a></li>
-                                        <li><a href="#gallery" style={{color: 'white', textDecoration: 'none'}}>Gallery</a></li>
-                                        <li><a href="#location" style={{color: 'white', textDecoration: 'none'}}>Location</a></li>
-                                        <li><a href="#about" style={{color: 'white', textDecoration: 'none'}}>About</a></li>
-                                        <li><a href="#contact" style={{color: 'white', textDecoration: 'none'}}>Contact</a></li>
-                                    </ul>
-                                </div>
-                                <div className="footer-section">
-                                    <h3>Follow Us</h3>
-                                    <div className="social-links">
-                                        <a href="https://www.facebook.com/p/Tansen-Byayam-Mandir-Fitness-center-100057364782818/" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-facebook"></i>
-                                        </a>
-                                        <a href="#" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-instagram"></i>
-                                        </a>
-                                        <a href="#" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-youtube"></i>
-                                        </a>
-                                    </div>
+                        <div className="container footer-content">
+                            <div className="footer-section about-us">
+                                <h3>About Us</h3>
+                                <p>Palpa Byayam Mandir is dedicated to providing Tansen with the best fitness experience. Join us to achieve your health and wellness goals.</p>
+                            </div>
+                            <div className="footer-section quick-links">
+                                <h3>Quick Links</h3>
+                                <ul>
+                                    <li><a href="#home">Home</a></li>
+                                    <li><a href="#services">Services</a></li>
+                                    <li><a href="#gallery">Gallery</a></li>
+                                    <li><a href="#location">Location</a></li>
+                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div className="footer-section contact-info-footer">
+                                <h3>Contact</h3>
+                                <p><i className="fas fa-map-marker-alt"></i> Buspark, Tansen, Palpa</p>
+                                <p><i className="fas fa-phone"></i> +977-9857068412</p>
+                                <p><i className="fas fa-envelope"></i> info@tansenbyayammandir.com</p>
+                            </div>
+                            <div className="footer-section social">
+                                <h3>Follow Us</h3>
+                                <div className="social-links">
+                                    <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
+                                    <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
+                                    <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
+                                    <a href="#" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
                                 </div>
                             </div>
-                            <div style={{borderTop: '1px solid #333', paddingTop: '1rem', marginTop: '1rem'}}>
-                                <p>&copy; 2025 Palpa Byayam Mandir. All rights reserved. | Designed for fitness enthusiasts in Tansen, Palpa</p>
-                            </div>
+                        </div>
+                        <div className="footer-bottom">
+                            <p>&copy; {new Date().getFullYear()} Tansen Byayam Mandir. All Rights Reserved.</p>
                         </div>
                     </footer>
 
                     {/* Modal */}
-                    {isModalOpen && (
-                        <div className="modal" style={{display: 'block'}} onClick={closeModal}>
-                            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                                <span className="close" onClick={closeModal}>&times;</span>
-                                <h2>Start Your Fitness Journey</h2>
-                                <p>Ready to transform your life? Contact us today to schedule your consultation and begin your fitness journey with Palpa Byayam Mandir.</p>
-                                <div style={{marginTop: '20px'}}>
-                                    <p><strong>Call us:</strong> +977-9857068412 / +977-9847069540 /+977-9805473170</p>
-                                    <p><strong>Visit us:</strong> Buspark, Tansen, Palpa</p>
-                                    <p><strong>Facebook:</strong> Tansen Byayam Mandir & Fitness center</p>
+                    <div id="myModal" className="modal" style={{ display: isModalOpen ? 'block' : 'none' }}>
+                        <div className="modal-content">
+                            <span className="close" onClick={closeModal}>&times;</span>
+                            <h2>Start Your Fitness Journey!</h2>
+                            <p>Fill out the form below and we'll get in touch to discuss your fitness goals and our membership options.</p>
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="modal-name">Name</label>
+                                    <input
+                                        type="text"
+                                        id="modal-name"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
                                 </div>
-                                <button className="cta-button" onClick={closeModal} style={{marginTop: '20px'}}>
-                                    Get Started
-                                </button>
-                            </div>
+                                <div className="form-group">
+                                    <label htmlFor="modal-email">Email</label>
+                                    <input
+                                        type="email"
+                                        id="modal-email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="modal-phone">Phone</label>
+                                    <input
+                                        type="tel"
+                                        id="modal-phone"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="modal-message">Message (Optional)</label>
+                                    <textarea
+                                        id="modal-message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                    ></textarea>
+                                </div>
+                                <button type="submit" className="submit-btn">Submit Inquiry</button>
+                            </form>
                         </div>
-                    )}
+                    </div>
                 </div>
             );
         };
 
-        // Render the app
         ReactDOM.render(<App />, document.getElementById('root'));
     </script>
 </body>
